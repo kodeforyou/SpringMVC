@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+C:\WS\Spring\MVC_WS\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1514613643.index
+\PDFViewResolverApp\src\main\resources
+C:\WS\Spring\MVC_WS\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3248795183.index
+\ExcelViewResolverApp\src\main\resources

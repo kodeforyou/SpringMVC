@@ -1,0 +1,46 @@
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+
+import org.springframework.web.servlet.view.document.AbstractXlsView;
+
+import com.satya.apps.xlview.bean.Student;
+
+public class StudentDetailsExcelView extends AbstractXlsView {
+	@Override
+	protected void buildExcelDocument(Map<String, Object> model, Workbook workbook, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+
+		// change the file name
+		response.setContentType( "application/ms-excel" );
+		response.setHeader("Content-Disposition", "attachment; filename=\"my-xls-file.xls\"");
+
+		
+		List<Student> students = (List<Student>) model.get("students");
+
+		// create excel xls sheet
+		Sheet sheet = workbook.createSheet("Spring MVC AbstractXlsView");
+
+		// create header row
+		Row header = sheet.createRow(0);
+		header.createCell(0).setCellValue("ID");
+		header.createCell(1).setCellValue("Name");
+		header.createCell(2).setCellValue("fees");
+
+		// Create data cells
+		int rowCount = 1;
+		for (Student student : students) {
+			Row courseRow = sheet.createRow(rowCount++);
+			courseRow.createCell(0).setCellValue(student.getId());
+			courseRow.createCell(1).setCellValue(student.getName());
+			courseRow.createCell(2).setCellValue(student.getFees());
+		}
+	}
+
+}
