@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="studentDAO" class="com.kodeforyou.spring.mvc.springmvc2.dao.StudentDAO"  />
+
+	<bean id="studentService" class="com.kodeforyou.spring.mvc.springmvc2.service.StudentService" autowire="byName">
+		
+	</bean>
+
+	<bean name="/findStudent.t" class="com.kodeforyou.spring.mvc.springmvc2.controller.StudentController" autowire="byName">
+		<property name="successView" value="success"></property>
+		<property name="errorView" value="error"></property>
+		
+	</bean>
+	
+	<bean name="/findSum.t" class="com.kodeforyou.spring.mvc.springmvc2.controller.AddController" />
+	
+	<bean name="/findTest.t" class="com.kodeforyou.spring.mvc.springmvc2.controller.TestController" />
+
+	<bean id="handlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" /><!--  id not required -->
+
+	<bean  id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"><!-- id not required -->
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+</beans>

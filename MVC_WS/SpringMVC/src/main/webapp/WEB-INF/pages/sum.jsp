@@ -1,0 +1,1 @@
+<h1> sum of two numbers:<%= request.getAttribute("result") %></h1>
